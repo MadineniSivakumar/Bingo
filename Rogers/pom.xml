@@ -32,31 +32,30 @@
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
        <plugin>
-		<groupId>org.jacoco</groupId>
-		<artifactId>jacoco-maven-plugin</artifactId>
-		<version>$0.8.4-SNAPSHOT</version>
-		<executions>
+	<groupId>org.jacoco</groupId>
+	<artifactId>jacoco-maven-plugin</artifactId>
+	<version>$0.8.4-SNAPSHOT</version>
+	 	<configuration>
+		<!-- Sets the path to the file which contains the execution data. -->
+                <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
+		<!-- Sets the output directory for the code coverage report. -->
+		<destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
+	</configuration>			
+	<executions>
 		 <execution>
-				<id>jacoco-intialize</id>
-				<goals>
-					<goal>prepare-agent</goal>
-				</goals>
+			<id>jacoco-intialize</id>
+			<goals>
+			 <goal>prepare-agent</goal>
+			</goals>
 		 </execution>
-			<execution>
-				<id>jacoco-site</id>
-				<phase>package</phase>
-				<goals>
-					<goal>report</goal>
-				</goals>
-			</execution>
-		</executions>
-		<configuration>
-					<!-- Sets the path to the file which contains the execution data. -->
-                          <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
-					
-					<!-- Sets the output directory for the code coverage report. -->
-					<destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
-		</configuration>			
+		 <execution>
+			<id>jacoco-site</id>
+			<phase>package</phase>
+			<goals>
+			 <goal>report</goal>
+			</goals>
+		</execution>
+	</executions>
 	</plugin>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
